@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Online</title>
+    <link rel="icon" href="/img/icon.png">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <section class="container">
+        <h2 class="title">ROCK PAPER SCISSORS</h2>
+        <div class="menu">
+            <button class="menu__item btn-link" onclick="modeSelection('random')">RANDOM USER</button>
+            <button class="menu__item btn-link" onclick="modeSelection('friend')">INVITE A FRIEND</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="copyright">
+                <a href="" target="_blank">©️ 2024, RPS</a>
+            </div>
+
+            <div class="eyes">
+                <div class="eye">
+                    <div class="ball"></div>
+                </div>
+                <div class="eye">
+                    <div class="ball"></div>
+                </div>
+            </div>
+
+            <div class="help">HELP</div>
+        </div>
+    </footer>
+
+    <script>
+        function modeSelection(mode) {
+            if (mode === 'random') {
+                window.location.href = '/game.html';
+            }
+            else {
+                const gameId = Math.random().toString(36).substring(7);
+                window.location.href = `/game.html?gameId=${gameId}`;
+            }
+        }
+
+        document.onmousemove = (event) => {
+            const balls = document.querySelectorAll(".ball");
+
+            var x = event.clientX * 100 / window.innerWidth + "%";
+            var y = event.clientY * 75 / window.innerHeight + "%";
+
+            balls.forEach(ball => {
+                ball.style.left = x / 2;
+                ball.style.top = y / 2;
+                ball.style.transform = `translate(${x},${y})`;
+            })
+        }
+
+        document.querySelector('.help').addEventListener('click', () => {
+            //TODO:
+        })
+    </script>
+</body>
+
+</html>
